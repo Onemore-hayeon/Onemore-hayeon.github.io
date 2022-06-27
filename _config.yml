@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "ko-KR"
-title                    : "OneMore"
+title                    : "OneMore Blog"
 title_separator          : "|"
 subtitle                 : "Actions speak louder than words."
 name                     : "Hayeon"
@@ -104,11 +104,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Hayeon"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
+  bio              : "'하나라도 더 많이' OneMore Blog 방문에 감사합니다."
+  location         : "South Korea"
+  email            : "hayeon.hjn@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
