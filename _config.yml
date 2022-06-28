@@ -106,7 +106,7 @@ analytics:
 author:
   name             : "Hayeon"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "'하나라도 더 많이' OneMore Blog 방문에 감사합니다."
+  bio              : "'하나라도 더 많이'\n OneMore Blog 방문에 감사합니다."
   location         : "South Korea"
   email            : "hayeon.hjn@gmail.com"
   links:
