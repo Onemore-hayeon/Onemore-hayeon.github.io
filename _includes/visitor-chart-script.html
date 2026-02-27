@@ -1,0 +1,49 @@
+{% if page.author_profile or layout.author_profile %}
+<script>
+(function () {
+  var chartEl = document.getElementById('om-visitor-chart');
+  if (!chartEl) return;
+
+  function localDateStr(offsetDays) {
+    var d = new Date();
+    d.setDate(d.getDate() - (offsetDays || 0));
+    return d.getFullYear() + '-' +
+      String(d.getMonth() + 1).padStart(2, '0') + '-' +
+      String(d.getDate()).padStart(2, '0');
+  }
+
+  function shortLabel(dateStr) {
+    var p = dateStr.split('-');
+    var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    return d.toLocaleDateString('en', { month: 'short', day: 'numeric' });
+  }
+
+  var days = [];
+  for (var i = 4; i >= 0; i--) days.push(localDateStr(i));
+
+  var db = firebase.database();
+
+  Promise.all(
+    days.map(function (day) {
+      return db.ref('visitors/' + day).once('value')
+        .then(function (snap) { return { day: day, count: snap.val() || 0 }; });
+    })
+  ).then(function (data) {
+    var maxVal = Math.max.apply(null, data.map(function (d) { return d.count; })) || 1;
+    var html = '<table class="vc-table">';
+    data.forEach(function (d) {
+      var pct = Math.max(4, Math.round((d.count / maxVal) * 100));
+      html += '<tr>' +
+        '<td class="vc-label">' + shortLabel(d.day) + '</td>' +
+        '<td class="vc-bar-cell"><div class="vc-bar" style="width:' + pct + '%"></div></td>' +
+        '<td class="vc-num">' + d.count + '</td>' +
+        '</tr>';
+    });
+    html += '</table>';
+    chartEl.innerHTML = html;
+  }).catch(function () {
+    chartEl.innerHTML = '<span class="vc-loading">-</span>';
+  });
+}());
+</script>
+{% endif %}
