@@ -559,11 +559,11 @@ samp {
 /* ── Comments section (Disqus container) ── */
 .page__comments {
   margin-top: 2em;
-  padding: 1.5em;
-  background: white;
-  border: 2px solid var(--om-ink);
-  border-radius: 6px;
-  box-shadow: var(--om-shadow);
+  padding: 1.5em 0;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--om-border);
+  box-shadow: none;
   max-width: 100%;
 }
 
@@ -586,11 +586,11 @@ samp {
 /* ── Post Reactions ── */
 .post-reactions {
   margin: 2.5em 0 1.5em;
-  padding: 1.2em 1.5em;
-  background: white;
-  border: 2px solid var(--om-ink);
-  border-radius: 6px;
-  box-shadow: var(--om-shadow);
+  padding: 1.2em 0;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--om-border);
+  box-shadow: none;
   text-align: center;
 }
 
@@ -755,30 +755,18 @@ samp {
   color: var(--om-coral);
 }
 
-/* ── Single post: 본문 컨테이너 border/shadow 제거, 배경과 자연스럽게 ── */
-.layout--single #main {
-  background: transparent;
-}
-
-.layout--single article.page {
+/* ── Single post: air 스킨 흰 배경/테두리 완전 제거 ── */
+.layout--single #main,
+.layout--single article.page,
+.layout--single .page,
+.layout--single .page__inner-wrap,
+.layout--single .page__content,
+.layout--single .e-content {
   background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.layout--single .page__inner-wrap {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* 포스트 본문은 배경 위에 그대로, 넓게 */
-.layout--single .page__content {
-  background: transparent !important;
+  background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
   max-width: 100%;
-  width: 100%;
 }
 
 /* archive__item 카드 border — 목록 페이지에서만 적용, 단일 포스트 내 related posts도 적용 */
