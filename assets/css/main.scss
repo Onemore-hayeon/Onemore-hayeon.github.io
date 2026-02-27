@@ -9,12 +9,23 @@ search: false
 @import "minimal-mistakes";
 
 /* ============================================================
-   OneMore Blog — Doodle / Mischief Theme
-   Palette: warm cream · coral-tomato · amber · sage
+   OneMore Blog — Doodle / Mischief Theme  v2
    ============================================================ */
 
-/* -- Google Fonts (Caveat = hand-drawn feel, Noto Sans KR for Korean) -- */
+/* ── Fonts
+   Caveat      : 손글씨 (영문 전용 — 사이트 타이틀)
+   Noto Sans KR: 본문 & 한글 제목
+   D2Coding    : 코드블록
+   ──────────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+@font-face {
+  font-family: 'D2Coding';
+  src: url('https://cdn.jsdelivr.net/gh/naver/d2codingfont@1.3.2/D2Coding-ver1.3.2-20180524-all.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ── CSS Variables ── */
 :root {
@@ -29,8 +40,7 @@ search: false
   --om-shadow  : 3px 4px 0 rgba(0,0,0,0.10);
 }
 
-
-/* ── html root background override (air skin sets #eee) ── */
+/* ── html root ── */
 html {
   background-color: var(--om-cream) !important;
 }
@@ -47,134 +57,138 @@ body {
 
 /* ── Masthead (Header Banner) ── */
 .masthead {
-  background: var(--om-cream);
+  background: var(--om-cream) !important;
   border-bottom: 3px solid var(--om-ink);
   position: relative;
   overflow: hidden;
+}
 
-  /* doodle squiggle via repeating SVG */
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 5px;
-    background: repeating-linear-gradient(
-      90deg,
-      var(--om-coral)   0px,   var(--om-coral)   10px,
-      var(--om-amber)   10px,  var(--om-amber)    20px,
-      var(--om-sage)    20px,  var(--om-sage)     30px,
-      transparent       30px,  transparent        36px
-    );
-  }
+.masthead::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 5px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--om-coral)  0px,  var(--om-coral)  10px,
+    var(--om-amber)  10px, var(--om-amber)   20px,
+    var(--om-sage)   20px, var(--om-sage)    30px,
+    transparent      30px, transparent       36px
+  );
 }
 
 .masthead__inner-wrap {
   padding: 0.9em 1em;
 }
 
-/* site title – hand-written font */
+/* site title: Caveat는 영문에서만 의도대로 동작 */
 .site-title {
-  font-family: "Caveat", cursive !important;
+  font-family: "Caveat", "Noto Sans KR", cursive !important;
   font-size: 1.7em !important;
   font-weight: 700;
   color: var(--om-ink) !important;
   letter-spacing: 0.01em;
   text-decoration: none !important;
+}
 
-  &:hover { color: var(--om-coral) !important; }
+.site-title:hover {
+  color: var(--om-coral) !important;
 }
 
 .site-subtitle {
-  font-family: "Caveat", cursive;
-  font-size: 1em;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.88em;
   color: var(--om-muted);
-  margin-top: -0.2em;
 }
 
 /* ── Navigation ── */
 .greedy-nav {
-  background: transparent;
-
-  a { color: var(--om-ink) !important; }
-
-  .visible-links a {
-    font-weight: 700;
-    font-size: 0.92em;
-    padding: 0.35em 0.8em;
-    border-radius: 4px;
-    border: 2px solid transparent;
-    transition: all 0.18s ease;
-    text-decoration: none;
-
-    &:hover {
-      border-color: var(--om-coral);
-      color: var(--om-coral) !important;
-      background: rgba(224,92,75,0.06);
-    }
-
-    &::after { display: none; } /* remove default underline */
-  }
-
-  .btn { /* mobile hamburger */
-    color: var(--om-ink) !important;
-  }
+  background: transparent !important;
 }
 
-/* search toggle */
+.greedy-nav a {
+  color: var(--om-ink) !important;
+}
+
+.greedy-nav .visible-links a {
+  font-weight: 700;
+  font-size: 0.92em;
+  padding: 0.35em 0.8em;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  transition: all 0.18s ease;
+  text-decoration: none;
+}
+
+.greedy-nav .visible-links a:hover {
+  border-color: var(--om-coral);
+  color: var(--om-coral) !important;
+  background: rgba(224,92,75,0.06);
+}
+
+.greedy-nav .visible-links a::after {
+  display: none;
+}
+
+.greedy-nav button {
+  color: var(--om-ink) !important;
+  background: transparent !important;
+}
+
 .search__toggle {
   color: var(--om-ink) !important;
-  &:hover { color: var(--om-coral) !important; }
+}
+
+.search__toggle:hover {
+  color: var(--om-coral) !important;
 }
 
 /* ── Sidebar ── */
-.sidebar {
-  .author__avatar {
-    img {
-      border: 3px solid var(--om-ink);
-      box-shadow: 4px 4px 0 var(--om-coral);
-      border-radius: 50%;
-    }
-  }
+.sidebar .author__avatar img {
+  border: 3px solid var(--om-ink);
+  box-shadow: 4px 4px 0 var(--om-coral);
+  border-radius: 50%;
+}
 
-  .author__name {
-    font-family: "Caveat", cursive;
-    font-size: 1.5em;
-    font-weight: 700;
-    color: var(--om-ink);
-  }
+.sidebar .author__name {
+  font-family: "Caveat", "Noto Sans KR", cursive;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--om-ink);
+}
 
-  .author__bio {
-    font-size: 0.83em;
-    color: var(--om-muted);
-    line-height: 1.6;
-    margin-top: 0.3em;
-  }
+.sidebar .author__bio {
+  font-size: 0.83em;
+  color: var(--om-muted);
+  line-height: 1.6;
+  margin-top: 0.3em;
+}
 
-  .author__location, .author__email, .author__links {
-    font-size: 0.82em;
-  }
+.sidebar .author__urls-wrapper button {
+  font-size: 0.82em;
+  border: 2px solid var(--om-border);
+  border-radius: 4px;
+  padding: 0.25em 0.6em;
+  background: white;
+  color: var(--om-ink);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
 
-  .author__urls-wrapper button {
-    font-size: 0.82em;
-    border: 2px solid var(--om-border);
-    border-radius: 4px;
-    padding: 0.25em 0.6em;
-    background: white;
-    color: var(--om-ink);
-    cursor: pointer;
-    transition: border-color 0.2s;
+.sidebar .author__urls-wrapper button:hover {
+  border-color: var(--om-coral);
+  color: var(--om-coral);
+}
 
-    &:hover { border-color: var(--om-coral); color: var(--om-coral); }
-  }
+.sidebar .author__urls a {
+  color: var(--om-ink);
+  font-size: 0.88em;
+  text-decoration: none;
+}
 
-  .author__urls a {
-    color: var(--om-ink);
-    font-size: 0.88em;
-    text-decoration: none;
-
-    &:hover { color: var(--om-coral); }
-  }
+.sidebar .author__urls a:hover {
+  color: var(--om-coral);
 }
 
 /* ── Post list / Archive cards ── */
@@ -186,33 +200,34 @@ body {
   padding: 1.1em 1.3em;
   margin-bottom: 1.2em;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
-
-  &:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 6px 0 rgba(0,0,0,0.12);
-  }
 }
 
+.archive__item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 6px 0 rgba(0,0,0,0.12);
+}
+
+/* 포스트 카드 제목: Noto Sans KR bold (Caveat 제거 — 한글 궁서체 폴백 방지) */
 .archive__item-title {
-  font-family: "Caveat", cursive;
-  font-size: 1.35em !important;
+  font-family: "Noto Sans KR", sans-serif !important;
+  font-size: 1.15em !important;
   font-weight: 700;
   margin-bottom: 0.2em;
+}
 
-  a {
-    color: var(--om-ink) !important;
-    text-decoration: none;
-    background-image: linear-gradient(var(--om-amber), var(--om-amber));
-    background-repeat: no-repeat;
-    background-size: 0% 3px;
-    background-position: 0 95%;
-    transition: background-size 0.25s ease;
+.archive__item-title a {
+  color: var(--om-ink) !important;
+  text-decoration: none;
+  background-image: linear-gradient(var(--om-amber), var(--om-amber));
+  background-repeat: no-repeat;
+  background-size: 0% 3px;
+  background-position: 0 95%;
+  transition: background-size 0.25s ease;
+}
 
-    &:hover {
-      background-size: 100% 3px;
-      color: var(--om-ink) !important;
-    }
-  }
+.archive__item-title a:hover {
+  background-size: 100% 3px;
+  color: var(--om-ink) !important;
 }
 
 .archive__item-excerpt {
@@ -222,157 +237,164 @@ body {
   line-height: 1.65;
 }
 
-/* date & read time chips */
 .page__meta {
   font-size: 0.78em;
   color: var(--om-muted);
-
-  .page__meta-sep { margin: 0 0.4em; }
 }
 
 /* ── Single Post ── */
+
+/* 포스트 제목: Noto Sans KR bold + amber underline 포인트 */
 .page__title {
-  font-family: "Caveat", cursive;
-  font-size: 2.2em !important;
+  font-family: "Noto Sans KR", sans-serif !important;
+  font-size: 1.9em !important;
   font-weight: 700;
   color: var(--om-ink);
-  line-height: 1.3;
-
-  /* underline squiggle accent */
+  line-height: 1.35;
   border-bottom: 4px solid var(--om-amber);
-  padding-bottom: 0.15em;
+  padding-bottom: 0.2em;
   display: inline-block;
 }
 
 .page__content {
-  h1, h2, h3, h4 {
-    font-family: "Caveat", cursive;
-    font-weight: 700;
-    color: var(--om-ink);
-    margin-top: 1.8em;
-  }
+  font-family: "Noto Sans KR", sans-serif;
+}
 
-  h1 {
-    font-size: 1.9em;
-    border-bottom: 3px solid var(--om-coral);
-    padding-bottom: 0.2em;
-  }
-  h2 {
-    font-size: 1.55em;
-    border-bottom: 2px dashed var(--om-border);
-    padding-bottom: 0.15em;
-  }
-  h3 {
-    font-size: 1.25em;
-    padding-left: 0.6em;
-    border-left: 4px solid var(--om-amber);
-  }
-  h4 { font-size: 1.1em; }
+/* 본문 제목: Noto Sans KR (궁서체 완전 제거) */
+.page__content h1,
+.page__content h2,
+.page__content h3,
+.page__content h4 {
+  font-family: "Noto Sans KR", sans-serif !important;
+  font-weight: 700;
+  color: var(--om-ink);
+  margin-top: 1.8em;
+}
 
-  /* paragraph links */
-  a {
-    color: var(--om-coral);
-    text-decoration: underline;
-    text-decoration-color: rgba(224,92,75,0.35);
-    text-underline-offset: 3px;
-    transition: text-decoration-color 0.2s;
+.page__content h1 {
+  font-size: 1.65em;
+  border-bottom: 3px solid var(--om-coral);
+  padding-bottom: 0.2em;
+}
 
-    &:hover { text-decoration-color: var(--om-coral); }
-  }
+.page__content h2 {
+  font-size: 1.35em;
+  border-bottom: 2px dashed var(--om-border);
+  padding-bottom: 0.15em;
+}
 
-  /* blockquote – sticky-note style */
-  blockquote {
-    border: none;
-    background: #FFFBEA;
-    border-left: 5px solid var(--om-amber);
-    border-radius: 0 6px 6px 0;
-    padding: 1em 1.3em;
-    box-shadow: 3px 3px 0 rgba(0,0,0,0.07);
-    font-style: normal;
-    color: var(--om-ink);
-    position: relative;
+.page__content h3 {
+  font-size: 1.15em;
+  padding-left: 0.6em;
+  border-left: 4px solid var(--om-amber);
+}
 
-    &::before {
-      content: '"';
-      font-family: "Caveat", cursive;
-      font-size: 2.5em;
-      color: var(--om-amber);
-      position: absolute;
-      top: -0.1em; left: 0.3em;
-      line-height: 1;
-      opacity: 0.5;
-    }
-  }
+.page__content h4 {
+  font-size: 1.05em;
+}
 
-  /* inline code */
-  code:not([class]) {
-    background: #F0EDE8;
-    color: var(--om-coral);
-    border-radius: 3px;
-    padding: 0.1em 0.4em;
-    font-size: 0.88em;
-  }
+/* paragraph links */
+.page__content a {
+  color: var(--om-coral);
+  text-decoration: underline;
+  text-decoration-color: rgba(224,92,75,0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
 
-  /* code blocks */
-  div.highlighter-rouge, figure.highlight {
-    border: 2px solid var(--om-ink);
-    border-radius: 6px;
-    box-shadow: 3px 3px 0 rgba(0,0,0,0.08);
-    overflow: hidden;
-    margin: 1.2em 0;
-  }
+.page__content a:hover {
+  text-decoration-color: var(--om-coral);
+}
 
-  pre {
-    border-radius: 0;
-    margin: 0;
-    padding: 1.1em 1.3em;
-  }
+/* blockquote — 포스트잇 스타일 */
+.page__content blockquote {
+  border: none;
+  background: #FFFBEA;
+  border-left: 5px solid var(--om-amber);
+  border-radius: 0 6px 6px 0;
+  padding: 1em 1.3em;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.07);
+  font-style: normal;
+  color: var(--om-ink);
+}
 
-  /* tables */
-  table {
-    font-size: 0.9em;
-    border-collapse: collapse;
-    width: 100%;
-    border: 2px solid var(--om-ink);
-    border-radius: 6px;
-    overflow: hidden;
+/* 코드: D2Coding 폰트 */
+.page__content code,
+code,
+kbd,
+pre,
+samp {
+  font-family: "D2Coding", "Consolas", "Monaco", "Courier New", monospace !important;
+}
 
-    th {
-      background: var(--om-ink);
-      color: white;
-      font-weight: 700;
-      padding: 0.6em 1em;
-    }
+.page__content code:not([class]) {
+  background: #F0EDE8;
+  color: var(--om-coral);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  font-size: 0.88em;
+}
 
-    td {
-      padding: 0.55em 1em;
-      border-bottom: 1px solid var(--om-border);
-    }
+.page__content div.highlighter-rouge,
+.page__content figure.highlight {
+  border: 2px solid var(--om-ink);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.08);
+  overflow: hidden;
+  margin: 1.2em 0;
+}
 
-    tr:hover td { background: rgba(244,165,53,0.08); }
-  }
+.page__content pre {
+  border-radius: 0;
+  margin: 0;
+  padding: 1.1em 1.3em;
+  font-size: 0.88em;
+}
 
-  /* unordered list custom bullet */
-  ul li::marker {
-    color: var(--om-coral);
-  }
+/* tables */
+.page__content table {
+  font-size: 0.9em;
+  border-collapse: collapse;
+  width: 100%;
+  border: 2px solid var(--om-ink);
+  border-radius: 6px;
+  overflow: hidden;
+}
 
-  ol li::marker {
-    color: var(--om-sage);
-    font-weight: 700;
-  }
+.page__content table th {
+  background: var(--om-ink);
+  color: white;
+  font-weight: 700;
+  padding: 0.6em 1em;
+}
 
-  /* horizontal rule */
-  hr {
-    border: none;
-    height: 3px;
-    background: repeating-linear-gradient(
-      90deg,
-      var(--om-coral) 0, var(--om-coral) 8px,
-      transparent 8px, transparent 14px
-    );
-    margin: 2em 0;
-  }
+.page__content table td {
+  padding: 0.55em 1em;
+  border-bottom: 1px solid var(--om-border);
+}
+
+.page__content table tr:hover td {
+  background: rgba(244,165,53,0.08);
+}
+
+.page__content ul li::marker {
+  color: var(--om-coral);
+}
+
+.page__content ol li::marker {
+  color: var(--om-sage);
+  font-weight: 700;
+}
+
+.page__content hr {
+  border: none;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--om-coral) 0, var(--om-coral) 8px,
+    transparent 8px, transparent 14px
+  );
+  margin: 2em 0;
 }
 
 /* ── TOC ── */
@@ -381,26 +403,32 @@ body {
   border-radius: 6px;
   box-shadow: var(--om-shadow);
   background: white;
-
-  .nav__title {
-    background: var(--om-ink);
-    color: white;
-    font-family: "Caveat", cursive;
-    font-size: 1.05em;
-    border-radius: 3px 3px 0 0;
-  }
-
-  a {
-    color: var(--om-ink);
-    font-size: 0.88em;
-
-    &:hover { color: var(--om-coral); }
-  }
-
-  .active a { color: var(--om-coral); font-weight: 700; }
 }
 
-/* ── Tags & Categories badges ── */
+.toc .nav__title {
+  background: var(--om-ink);
+  color: white;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.95em;
+  font-weight: 700;
+  border-radius: 3px 3px 0 0;
+}
+
+.toc a {
+  color: var(--om-ink);
+  font-size: 0.88em;
+}
+
+.toc a:hover {
+  color: var(--om-coral);
+}
+
+.toc .active a {
+  color: var(--om-coral);
+  font-weight: 700;
+}
+
+/* ── Tags & Categories ── */
 .page__taxonomy-item {
   display: inline-block;
   font-size: 0.78em;
@@ -413,15 +441,14 @@ body {
   text-decoration: none;
   background: white;
   transition: all 0.15s;
-
-  &:hover {
-    background: var(--om-ink);
-    color: white;
-    transform: rotate(-1deg);
-  }
 }
 
-/* tag chip colors (cycle) */
+.page__taxonomy-item:hover {
+  background: var(--om-ink);
+  color: white;
+  transform: rotate(-1deg);
+}
+
 .page__tags .page__taxonomy-item:nth-child(3n+1) { border-color: var(--om-coral); }
 .page__tags .page__taxonomy-item:nth-child(3n+2) { border-color: var(--om-sage); }
 .page__tags .page__taxonomy-item:nth-child(3n+3) { border-color: var(--om-amber); }
@@ -430,59 +457,81 @@ body {
 .breadcrumbs {
   font-size: 0.8em;
   color: var(--om-muted);
-  ol { margin: 0; padding: 0; }
-  li a { color: var(--om-coral); text-decoration: none; &:hover { text-decoration: underline; } }
 }
 
-/* ── Footer ── */
+.breadcrumbs ol {
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs li a {
+  color: var(--om-coral);
+  text-decoration: none;
+}
+
+.breadcrumbs li a:hover {
+  text-decoration: underline;
+}
+
+/* ── Footer — 텍스트 강제 가시성 확보 ── */
 .page__footer {
-  background: var(--om-cream);
+  background: var(--om-cream) !important;
   border-top: 3px solid var(--om-ink);
-  font-size: 0.82em;
-  color: var(--om-muted);
   margin-top: 4em;
+}
 
-  footer {
-    padding: 1.2em 0;
-  }
+.page__footer,
+.page__footer footer,
+.page__footer p,
+.page__footer li,
+.page__footer span,
+.page__footer a {
+  color: var(--om-ink) !important;
+}
 
-  a { color: var(--om-ink); &:hover { color: var(--om-coral); } }
+.page__footer footer {
+  padding: 1.2em 0;
+  font-size: 0.82em;
+}
 
-  .page__footer-copyright {
-    font-family: "Caveat", cursive;
-    font-size: 1em;
-  }
+.page__footer a:hover {
+  color: var(--om-coral) !important;
+}
+
+.page__footer-copyright {
+  font-size: 0.88em;
+  color: var(--om-muted) !important;
+}
+
+/* footer social icons */
+.page__footer .social-icons .fas,
+.page__footer .social-icons .fab,
+.page__footer .social-icons .far {
+  color: var(--om-ink) !important;
 }
 
 /* ── Pagination ── */
-.pagination {
-  .pagination--pager {
-    border: 2px solid var(--om-ink);
-    border-radius: 4px;
-    color: var(--om-ink);
-    font-weight: 700;
-    padding: 0.4em 1em;
-    transition: all 0.15s;
-    text-decoration: none;
-
-    &:hover {
-      background: var(--om-ink);
-      color: white;
-      transform: translate(-1px, -1px);
-      box-shadow: 2px 2px 0 rgba(0,0,0,0.15);
-    }
-  }
+.pagination .pagination--pager {
+  border: 2px solid var(--om-ink);
+  border-radius: 4px;
+  color: var(--om-ink);
+  font-weight: 700;
+  padding: 0.4em 1em;
+  transition: all 0.15s;
+  text-decoration: none;
 }
 
-/* ── Search ── */
-.search-content {
-  .archive__item-title a { color: var(--om-ink) !important; }
+.pagination .pagination--pager:hover {
+  background: var(--om-ink);
+  color: white;
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.15);
 }
 
 /* ── Responsive tweaks ── */
 @media (max-width: 768px) {
-  .page__title { font-size: 1.7em !important; }
-  .archive__item-title { font-size: 1.15em !important; }
-  .page__content h1 { font-size: 1.55em; }
-  .page__content h2 { font-size: 1.3em; }
+  .page__title { font-size: 1.5em !important; }
+  .archive__item-title { font-size: 1em !important; }
+  .page__content h1 { font-size: 1.4em; }
+  .page__content h2 { font-size: 1.2em; }
 }
