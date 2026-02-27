@@ -535,3 +535,143 @@ samp {
   .page__content h1 { font-size: 1.4em; }
   .page__content h2 { font-size: 1.2em; }
 }
+
+/* ── X (Twitter) share button override ── */
+.btn--x {
+  background-color: #000 !important;
+  border-color: #000 !important;
+  color: #fff !important;
+}
+
+.btn--x:hover {
+  background-color: #333 !important;
+  border-color: #333 !important;
+}
+
+/* if FA5 doesn't have fa-x-twitter, fall back to text only */
+.btn--x .fa-x-twitter::before {
+  content: "𝕏";
+  font-style: normal;
+  font-family: serif;
+  font-size: 1em;
+}
+
+/* ── Comments section (Disqus container) ── */
+.page__comments {
+  margin-top: 2em;
+  padding: 1.5em;
+  background: white;
+  border: 2px solid var(--om-ink);
+  border-radius: 6px;
+  box-shadow: var(--om-shadow);
+  max-width: 100%;
+}
+
+.page__comments-title {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  margin-bottom: 1em;
+  color: var(--om-ink);
+  border-bottom: 2px solid var(--om-border);
+  padding-bottom: 0.5em;
+}
+
+/* Scale down Disqus embed slightly on wide screens */
+#disqus_thread {
+  max-width: 100%;
+  font-size: 0.92em;
+}
+
+/* ── Post Reactions ── */
+.post-reactions {
+  margin: 2.5em 0 1.5em;
+  padding: 1.2em 1.5em;
+  background: white;
+  border: 2px solid var(--om-ink);
+  border-radius: 6px;
+  box-shadow: var(--om-shadow);
+  text-align: center;
+}
+
+.post-reactions__label {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.85em;
+  font-weight: 700;
+  color: var(--om-muted);
+  margin: 0 0 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.post-reactions__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6em;
+}
+
+.reaction-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2em;
+  padding: 0.55em 0.9em;
+  background: var(--om-cream);
+  border: 2px solid var(--om-border);
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Noto Sans KR", sans-serif;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  line-height: 1;
+  min-width: 64px;
+}
+
+.reaction-btn:hover {
+  border-color: var(--om-ink);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 0 rgba(0,0,0,0.1);
+}
+
+.reaction-emoji {
+  font-size: 1.6em;
+  line-height: 1;
+  display: block;
+}
+
+.reaction-text {
+  font-size: 0.7em;
+  font-weight: 700;
+  color: var(--om-muted);
+  display: block;
+}
+
+/* Active (selected) state */
+.reaction-btn--active {
+  border-color: var(--om-coral);
+  background: rgba(224, 92, 75, 0.08);
+  box-shadow: 0 2px 0 var(--om-coral);
+}
+
+.reaction-btn--active .reaction-text {
+  color: var(--om-coral);
+}
+
+/* Pop animation on click */
+@keyframes reaction-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.3) rotate(-5deg); }
+  70%  { transform: scale(0.95) rotate(3deg); }
+  100% { transform: scale(1); }
+}
+
+.reaction-btn--pop {
+  animation: reaction-pop 0.35s ease forwards;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .post-reactions__buttons { gap: 0.4em; }
+  .reaction-btn { min-width: 52px; padding: 0.45em 0.6em; }
+  .reaction-emoji { font-size: 1.35em; }
+}
