@@ -7,3 +7,182 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+/* ============================================================
+   OneMore Blog - Custom Styles
+   ============================================================ */
+
+/* ----- 전체 타이포그래피 ----- */
+body {
+  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.8;
+  letter-spacing: -0.01em;
+}
+
+/* ----- 마스트헤드(상단 바) ----- */
+.masthead {
+  border-bottom: 2px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+
+  &__inner-wrap {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+  }
+}
+
+.site-title {
+  font-weight: 700;
+  font-size: 1.2em;
+  letter-spacing: 0.02em;
+}
+
+/* ----- 네비게이션 ----- */
+.greedy-nav {
+  .visible-links a {
+    font-weight: 500;
+    font-size: 0.95em;
+    padding: 0.4em 0.8em;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba(255,255,255,0.08);
+    }
+  }
+}
+
+/* ----- 사이드바 저자 프로필 ----- */
+.sidebar .author__name {
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.sidebar .author__bio {
+  font-size: 0.82em;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.sidebar .author__urls-wrapper {
+  margin-top: 0.8em;
+}
+
+/* ----- 포스트 목록 카드 ----- */
+.list__item {
+  padding: 1.2em 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .archive__item-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 0.3em;
+
+    a {
+      text-decoration: none;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  .archive__item-excerpt {
+    font-size: 0.88em;
+    opacity: 0.8;
+    margin-top: 0.3em;
+    line-height: 1.6;
+  }
+}
+
+/* ----- 포스트 본문 ----- */
+.page__content {
+  h1, h2, h3 {
+    font-weight: 700;
+    margin-top: 1.8em;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.3em;
+  }
+
+  h1 { font-size: 1.6em; }
+  h2 { font-size: 1.3em; }
+  h3 { font-size: 1.1em; border-bottom: none; }
+
+  blockquote {
+    border-left: 4px solid #7b9dd4;
+    background: rgba(123,157,212,0.08);
+    padding: 0.8em 1.2em;
+    border-radius: 0 4px 4px 0;
+    font-style: normal;
+  }
+
+  code {
+    font-size: 0.88em;
+    border-radius: 3px;
+    padding: 0.1em 0.4em;
+  }
+
+  pre code {
+    font-size: 0.85em;
+  }
+
+  table {
+    font-size: 0.9em;
+    border-collapse: collapse;
+    width: 100%;
+
+    th, td {
+      padding: 0.6em 1em;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    th {
+      font-weight: 600;
+      background: rgba(255,255,255,0.06);
+    }
+  }
+}
+
+/* ----- 태그 & 카테고리 배지 ----- */
+.page__taxonomy-item {
+  font-size: 0.78em;
+  padding: 0.2em 0.7em;
+  border-radius: 12px;
+  margin: 0.15em;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(255,255,255,0.1);
+  }
+}
+
+/* ----- 검색창 ----- */
+.search__toggle {
+  border-radius: 4px;
+}
+
+/* ----- 푸터 ----- */
+.page__footer {
+  margin-top: 3em;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.82em;
+  opacity: 0.7;
+}
+
+/* ----- 반응형: 모바일 ----- */
+@media (max-width: 768px) {
+  .page__content {
+    h1 { font-size: 1.35em; }
+    h2 { font-size: 1.15em; }
+  }
+
+  .list__item .archive__item-title {
+    font-size: 1em;
+  }
+}
+
