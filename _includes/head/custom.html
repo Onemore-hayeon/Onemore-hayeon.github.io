@@ -1,5 +1,34 @@
-<!-- start custom head snippets -->
+<!-- Firebase SDK (compat v9) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+  // ── Firebase init ──────────────────────────────────────────────
+  if (!firebase.apps.length) {
+    firebase.initializeApp({
+      apiKey:            "AIzaSyB7Wyvs0OxMIxAvO_7N8smFwIjXZctcTSY",
+      authDomain:        "onemore-blog.firebaseapp.com",
+      databaseURL:       "https://onemore-blog-default-rtdb.firebaseio.com",
+      projectId:         "onemore-blog",
+      storageBucket:     "onemore-blog.firebasestorage.app",
+      messagingSenderId: "288764754790",
+      appId:             "1:288764754790:web:24866b09eeccb006bfe6a7"
+    });
+  }
 
-<!-- insert favicons. use https://realfavicongenerator.net/ -->
-
-<!-- end custom head snippets -->
+  // ── Daily visitor tracking (once per browser session per day) ──
+  (function () {
+    function localDateStr() {
+      var d = new Date();
+      return d.getFullYear() + '-' +
+        String(d.getMonth() + 1).padStart(2, '0') + '-' +
+        String(d.getDate()).padStart(2, '0');
+    }
+    var today      = localDateStr();
+    var sessionKey = 'om_vis_' + today;
+    if (!sessionStorage.getItem(sessionKey)) {
+      firebase.database().ref('visitors/' + today)
+        .transaction(function (n) { return (n || 0) + 1; });
+      sessionStorage.setItem(sessionKey, '1');
+    }
+  })();
+</script>
