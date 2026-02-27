@@ -1,11 +1,10 @@
 # main navigation links
 main:
-  - title: "홈"
+  - title: "Home"
     url: /
-  - title: "카테고리"
+  - title: "Categories"
     url: /categories/
-  - title: "태그"
+  - title: "Tags"
     url: /tags/
-  - title: "소개"
+  - title: "About"
     url: /about/
-
