@@ -675,3 +675,82 @@ samp {
   .reaction-btn { min-width: 52px; padding: 0.45em 0.6em; }
   .reaction-emoji { font-size: 1.35em; }
 }
+
+/* ── Sidebar: Visitor Chart ── */
+.sidebar-visitors {
+  margin-top: 1.2em;
+  padding: 0.9em 1em;
+  background: white;
+  border: 2px solid var(--om-ink);
+  border-radius: 6px;
+  box-shadow: var(--om-shadow);
+}
+
+.sidebar-visitors__title {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.8em;
+  font-weight: 700;
+  color: var(--om-ink);
+  margin: 0 0 0.7em;
+  letter-spacing: 0.03em;
+}
+
+.vc-loading {
+  font-size: 0.75em;
+  color: var(--om-muted);
+}
+
+.vc-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.vc-table tr { border: none; }
+.vc-table td { padding: 2px 0; border: none; background: none; }
+
+.vc-label {
+  font-size: 0.7em;
+  font-weight: 700;
+  color: var(--om-muted);
+  width: 44px;
+  white-space: nowrap;
+}
+
+.vc-bar-cell {
+  padding: 0 4px !important;
+}
+
+.vc-bar {
+  height: 10px;
+  background: var(--om-coral);
+  border-radius: 3px;
+  min-width: 4px;
+  transition: width 0.4s ease;
+}
+
+.vc-table tr:nth-child(even) .vc-bar { background: var(--om-sage); }
+.vc-table tr:nth-child(3n)   .vc-bar { background: var(--om-amber); }
+
+.vc-num {
+  font-size: 0.7em;
+  font-weight: 700;
+  color: var(--om-ink);
+  text-align: right;
+  width: 28px;
+}
+
+/* ── Reaction count badge on button ── */
+.reaction-count {
+  display: block;
+  font-size: 0.68em;
+  font-weight: 700;
+  color: var(--om-muted);
+  margin-top: 1px;
+  min-width: 1.5em;
+  text-align: center;
+}
+
+.reaction-btn--active .reaction-count {
+  color: var(--om-coral);
+}
