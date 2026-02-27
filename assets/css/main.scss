@@ -193,18 +193,18 @@ body {
 
 /* ── Post list / Archive cards ── */
 .archive__item {
-  background: var(--om-bg-card);
-  border: 2px solid var(--om-ink);
-  border-radius: 6px;
-  box-shadow: var(--om-shadow);
-  padding: 1.1em 1.3em;
-  margin-bottom: 1.2em;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0.4em 0;
+  margin-bottom: 1.4em;
+  border-bottom: 1px solid var(--om-border);
 }
 
 .archive__item:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 6px 0 rgba(0,0,0,0.12);
+  transform: none;
+  box-shadow: none;
 }
 
 /* 포스트 카드 제목: Noto Sans KR bold (Caveat 제거 — 한글 궁서체 폴백 방지) */
