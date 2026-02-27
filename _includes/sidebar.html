@@ -2,58 +2,11 @@
   <div class="sidebar sticky">
   {% if page.author_profile or layout.author_profile %}{% include author-profile.html %}{% endif %}
 
-  <!-- ── Visitor chart ──────────────────────────────────── -->
+  <!-- Visitor chart (script is in visitor-chart-script.html, loaded at page bottom) -->
   <div class="sidebar-visitors">
     <h4 class="sidebar-visitors__title">&#128202; Recent Visitors</h4>
     <div id="om-visitor-chart"><span class="vc-loading">Loading&hellip;</span></div>
   </div>
-
-  <script>
-  (function () {
-    function localDateStr(offsetDays) {
-      var d = new Date();
-      d.setDate(d.getDate() - (offsetDays || 0));
-      return d.getFullYear() + '-' +
-        String(d.getMonth() + 1).padStart(2, '0') + '-' +
-        String(d.getDate()).padStart(2, '0');
-    }
-    function shortLabel(dateStr) {
-      /* e.g. "2026-02-27" -> "Feb 27" */
-      var parts = dateStr.split('-');
-      var d = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-      return d.toLocaleDateString('en', { month: 'short', day: 'numeric' });
-    }
-
-    var days = [];
-    for (var i = 4; i >= 0; i--) days.push(localDateStr(i));
-
-    var db        = firebase.database();
-    var container = document.getElementById('om-visitor-chart');
-
-    Promise.all(
-      days.map(function (day) {
-        return db.ref('visitors/' + day).once('value')
-          .then(function (snap) { return { day: day, count: snap.val() || 0 }; });
-      })
-    ).then(function (data) {
-      var maxVal = Math.max.apply(null, data.map(function (d) { return d.count; })) || 1;
-      var html = '<table class="vc-table">';
-      data.forEach(function (d) {
-        var pct = Math.max(4, Math.round((d.count / maxVal) * 100));
-        html += '<tr>' +
-          '<td class="vc-label">' + shortLabel(d.day) + '</td>' +
-          '<td class="vc-bar-cell"><div class="vc-bar" style="width:' + pct + '%"></div></td>' +
-          '<td class="vc-num">' + d.count + '</td>' +
-          '</tr>';
-      });
-      html += '</table>';
-      container.innerHTML = html;
-    }).catch(function () {
-      container.innerHTML = '<span class="vc-loading">—</span>';
-    });
-  })();
-  </script>
-  <!-- ── /Visitor chart ─────────────────────────────────── -->
 
   {% if page.sidebar %}
     {% for s in page.sidebar %}
