@@ -29,6 +29,12 @@ search: false
   --om-shadow  : 3px 4px 0 rgba(0,0,0,0.10);
 }
 
+
+/* ── html root background override (air skin sets #eee) ── */
+html {
+  background-color: var(--om-cream) !important;
+}
+
 /* ── Base ── */
 body {
   background-color: var(--om-cream);
