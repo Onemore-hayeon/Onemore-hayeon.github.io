@@ -1,0 +1,79 @@
+<section class="post-reactions" aria-label="Post reactions">
+  <p class="post-reactions__label">How was this post?</p>
+  <div class="post-reactions__buttons" role="group">
+    <button class="reaction-btn" data-emoji="👍" aria-label="Good" title="Good">
+      <span class="reaction-emoji">👍</span>
+      <span class="reaction-text">Good</span>
+    </button>
+    <button class="reaction-btn" data-emoji="🔥" aria-label="Interesting" title="Interesting">
+      <span class="reaction-emoji">🔥</span>
+      <span class="reaction-text">Hot</span>
+    </button>
+    <button class="reaction-btn" data-emoji="💡" aria-label="Insightful" title="Insightful">
+      <span class="reaction-emoji">💡</span>
+      <span class="reaction-text">Insightful</span>
+    </button>
+    <button class="reaction-btn" data-emoji="❤️" aria-label="Love" title="Love">
+      <span class="reaction-emoji">❤️</span>
+      <span class="reaction-text">Love</span>
+    </button>
+    <button class="reaction-btn" data-emoji="🎉" aria-label="Celebrate" title="Celebrate">
+      <span class="reaction-emoji">🎉</span>
+      <span class="reaction-text">Nice!</span>
+    </button>
+  </div>
+</section>
+
+<script>
+(function () {
+  var postId = {{ page.id | jsonify }};
+  var storageKey = 'omreact__' + postId;
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(storageKey)) || {}; }
+    catch (e) { return {}; }
+  }
+
+  function save(data) {
+    try { localStorage.setItem(storageKey, JSON.stringify(data)); }
+    catch (e) {}
+  }
+
+  var state = load();
+  var buttons = document.querySelectorAll('.reaction-btn');
+
+  buttons.forEach(function (btn) {
+    var emoji = btn.dataset.emoji;
+
+    // restore saved state
+    if (state[emoji]) {
+      btn.classList.add('reaction-btn--active');
+      btn.setAttribute('aria-pressed', 'true');
+    } else {
+      btn.setAttribute('aria-pressed', 'false');
+    }
+
+    btn.addEventListener('click', function () {
+      var current = load();
+      if (current[emoji]) {
+        // toggle OFF
+        delete current[emoji];
+        btn.classList.remove('reaction-btn--active');
+        btn.setAttribute('aria-pressed', 'false');
+      } else {
+        // toggle ON
+        current[emoji] = true;
+        btn.classList.add('reaction-btn--active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        // little pop animation
+        btn.classList.add('reaction-btn--pop');
+        btn.addEventListener('animationend', function () {
+          btn.classList.remove('reaction-btn--pop');
+        }, { once: true });
+      }
+      save(current);
+    });
+  });
+}());
+</script>
