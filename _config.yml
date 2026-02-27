@@ -1,19 +1,19 @@
 # Theme Settings
-minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "air"
 
 # Site Settings
-locale                   : "ko-KR"
+locale                   : "en"
 title                    : "OneMore Blog"
 title_separator          : "|"
 subtitle                 : "Actions speak louder than words."
 name                     : "Hayeon"
-description              : "개발과 보안 IT 지식을 쌓는 공간, OneMore입니다."
+description              : "A space to collect knowledge on development & security IT."
 url                      : "https://onemore-hayeon.github.io"
 baseurl                  : ""
 repository               : "onemore-hayeon/onemore-hayeon.github.io"
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
+teaser                   :
+logo                     :
+masthead_title           :
 breadcrumbs              : true
 words_per_minute         : 200
 comments:
@@ -29,9 +29,6 @@ google_site_verification :
 bing_site_verification   :
 naver_site_verification  :
 
-# Social Sharing
-og_image                 :
-
 # Analytics
 analytics:
   provider               : false
@@ -39,14 +36,12 @@ analytics:
 # Site Author
 author:
   name             : "Hayeon"
-  avatar           : "/assets/images/bio-photo.jpg"
-  bio              : "개발과 보안 IT 지식을 기록합니다.\n하나라도 더 많이 배우고 나눕니다."
+  avatar           : "/assets/images/bio-photo.png"
+  bio              : "One more thing learned every day.
+Dev & Security IT notes."
   location         : "South Korea"
   email            : "hayeon.hjn@gmail.com"
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:hayeon.hjn@gmail.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/onemore-hayeon"
@@ -99,7 +94,9 @@ markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 markdown: kramdown
 highlighter: rouge
 lsi: false
-excerpt_separator: "\n\n"
+excerpt_separator: "
+
+"
 incremental: false
 
 # Markdown Processing
@@ -172,4 +169,3 @@ defaults:
     values:
       layout: single
       author_profile: true
-
