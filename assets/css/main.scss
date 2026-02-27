@@ -754,3 +754,53 @@ samp {
 .reaction-btn--active .reaction-count {
   color: var(--om-coral);
 }
+
+/* ── Single post: 본문 컨테이너 border/shadow 제거, 배경과 자연스럽게 ── */
+.layout--single #main {
+  background: transparent;
+}
+
+.layout--single article.page {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.layout--single .page__inner-wrap {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 포스트 본문은 배경 위에 그대로, 넓게 */
+.layout--single .page__content {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* archive__item 카드 border — 목록 페이지에서만 적용, 단일 포스트 내 related posts도 적용 */
+/* 단, single 포스트 본문 자체에는 적용 안 됨 (article.page는 archive__item 아님) */
+
+/* Disqus 자체 이모지 반응 패널 숨기기 */
+#disqus_thread .reaction-box,
+#disqus_thread [data-role="reactions"],
+#disqus_thread .Dq-reaction {
+  display: none !important;
+}
+
+/* 포스트 헤더 (제목 + 메타) 영역 여백 정리 */
+.layout--single .page__inner-wrap header {
+  margin-bottom: 1.5em;
+  padding-bottom: 1em;
+  border-bottom: 2px dashed var(--om-border);
+}
+
+/* 반응형: 본문이 브라우저 너비에 따라 적절히 늘어나도록 */
+@media (min-width: 80em) {
+  .layout--single .page {
+    padding-right: 0;
+  }
+}
