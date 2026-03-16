@@ -50,7 +50,7 @@ body {
   background-color: var(--om-cream);
   color: var(--om-ink);
   font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 16px;
+  font-size: 17.5px;
   line-height: 1.85;
   letter-spacing: -0.01em;
 }
@@ -231,14 +231,14 @@ body {
 }
 
 .archive__item-excerpt {
-  font-size: 0.87em;
+  font-size: 0.91em;
   color: var(--om-muted);
   margin-top: 0.4em;
   line-height: 1.65;
 }
 
 .page__meta {
-  font-size: 0.78em;
+  font-size: 0.83em;
   color: var(--om-muted);
 }
 
@@ -792,3 +792,69 @@ samp {
     padding-right: 0;
   }
 } */
+
+/* ── Accordion (Categories / Tags) ── */
+.accordion-index {
+  margin-top: 1.5em;
+}
+
+.accordion-section {
+  border-bottom: 1px solid var(--om-border);
+}
+
+.accordion-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  width: 100%;
+  text-align: left;
+  padding: 0.85em 0.4em;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--om-ink);
+  transition: color 0.15s;
+}
+
+.accordion-trigger:hover {
+  color: var(--om-coral);
+}
+
+.accordion-name {
+  flex: 1;
+}
+
+.accordion-badge {
+  font-size: 0.75em;
+  font-weight: 700;
+  color: white;
+  background: var(--om-ink);
+  border-radius: 20px;
+  padding: 0.15em 0.65em;
+  min-width: 1.8em;
+  text-align: center;
+  transition: background 0.15s;
+}
+
+.accordion-trigger--open .accordion-badge {
+  background: var(--om-coral);
+}
+
+.accordion-arrow {
+  font-size: 0.7em;
+  color: var(--om-muted);
+  transition: color 0.15s;
+  width: 1em;
+  text-align: center;
+}
+
+.accordion-trigger--open .accordion-arrow {
+  color: var(--om-coral);
+}
+
+.accordion-panel {
+  padding: 0.3em 0.4em 1.4em;
+}
