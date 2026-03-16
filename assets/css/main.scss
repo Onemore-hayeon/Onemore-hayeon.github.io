@@ -878,50 +878,89 @@ samp {
   color: #D4D4D4 !important;
 }
 
-/* 모든 rouge 토큰 span의 배경색 초기화 */
-.highlight span {
-  background: transparent !important;
+/* 개별 토큰 클래스 직접 타겟 (specificity 확보) */
+
+/* 문자열 s, sa, si — 배경 제거, 주황색 텍스트 */
+.page__content .highlight .s,
+.page__content .highlight .sa,
+.page__content .highlight .sb,
+.page__content .highlight .sc,
+.page__content .highlight .sd,
+.page__content .highlight .se,
+.page__content .highlight .sh,
+.page__content .highlight .si,
+.page__content .highlight .sl,
+.page__content .highlight .ss,
+.page__content .highlight .s1,
+.page__content .highlight .s2,
+.page__content .highlight .sx {
+  color: #CE9178 !important;
+  background-color: transparent !important;
 }
 
-/* 기본 텍스트 */
-.highlight .n, .highlight .nx, .highlight .nl { color: #D4D4D4 !important; }
+/* 키워드 kn, kd 등 — 파란색 */
+.page__content .highlight .k,
+.page__content .highlight .kc,
+.page__content .highlight .kd,
+.page__content .highlight .kn,
+.page__content .highlight .kp,
+.page__content .highlight .kr,
+.page__content .highlight .kt {
+  color: #569CD6 !important;
+  background-color: transparent !important;
+}
 
-/* 키워드 — 파란색 */
-.highlight .k, .highlight .kd, .highlight .kn,
-.highlight .kp, .highlight .kr, .highlight .kt,
-.highlight .kc { color: #569CD6 !important; }
+/* 주석 c1 — 초록색 이탤릭 */
+.page__content .highlight .c,
+.page__content .highlight .c1,
+.page__content .highlight .cm,
+.page__content .highlight .cp,
+.page__content .highlight .cs {
+  color: #6A9955 !important;
+  background-color: transparent !important;
+  font-style: italic;
+}
 
-/* 문자열 — 주황색 */
-.highlight .s, .highlight .s1, .highlight .s2,
-.highlight .sb, .highlight .sc, .highlight .sd,
-.highlight .se, .highlight .si, .highlight .sx { color: #CE9178 !important; }
+/* 이름/변수 */
+.page__content .highlight .n,
+.page__content .highlight .nn,
+.page__content .highlight .nl {
+  color: #9CDCFE !important;
+  background-color: transparent !important;
+}
 
-/* 주석 — 초록색 */
-.highlight .c, .highlight .c1, .highlight .cm,
-.highlight .cs, .highlight .cp { color: #6A9955 !important; font-style: italic; }
+/* 내장 함수 nb, bp */
+.page__content .highlight .nb,
+.page__content .highlight .bp {
+  color: #DCDCAA !important;
+  background-color: transparent !important;
+}
 
-/* 숫자 — 연두색 */
-.highlight .mi, .highlight .mf, .highlight .mh,
-.highlight .mo, .highlight .m { color: #B5CEA8 !important; }
+/* 연산자, 구두점 o, p */
+.page__content .highlight .o,
+.page__content .highlight .ow,
+.page__content .highlight .p {
+  color: #D4D4D4 !important;
+  background-color: transparent !important;
+}
 
-/* 함수/속성 이름 — 노란색 */
-.highlight .nf, .highlight .nb { color: #DCDCAA !important; }
+/* 숫자 */
+.page__content .highlight .m,
+.page__content .highlight .mi,
+.page__content .highlight .mf,
+.page__content .highlight .mh,
+.page__content .highlight .mo {
+  color: #B5CEA8 !important;
+  background-color: transparent !important;
+}
 
-/* 클래스/타입 — 청록색 */
-.highlight .nc, .highlight .nn { color: #4EC9B0 !important; }
+/* 에러 — 배경 제거 */
+.page__content .highlight .err {
+  color: #F44747 !important;
+  background-color: transparent !important;
+}
 
-/* 변수/self — 연보라 */
-.highlight .nv, .highlight .vc,
-.highlight .vg, .highlight .vi { color: #9CDCFE !important; }
-
-/* 연산자/구두점 */
-.highlight .o, .highlight .ow,
-.highlight .p { color: #D4D4D4 !important; }
-
-/* 에러 토큰 배경 제거 */
-.highlight .err { background: transparent !important; color: #F44747 !important; }
-
-/* 특수 강조 (gutter 등) */
-.highlight .gl, .highlight .gp { color: #858585 !important; }
-.highlight .gd { color: #F44747 !important; background: rgba(244,71,71,0.1) !important; }
-.highlight .gi { color: #B5CEA8 !important; background: rgba(181,206,168,0.1) !important; }
+/* 나머지 모든 span 배경 제거 (fallback) */
+.page__content .highlight span {
+  background-color: transparent !important;
+}
