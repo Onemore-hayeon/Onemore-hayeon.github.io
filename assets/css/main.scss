@@ -349,16 +349,20 @@ samp {
   margin: 0;
   padding: 1.1em 1.3em;
   font-size: 1em;
+  line-height: 1.65;
 }
 
 /* tables */
 .page__content table {
-  font-size: 0.9em;
-  // border-collapse: collapse;
+  font-size: 0.95em;
+  border-collapse: collapse;
   width: 100%;
   border: 2px solid var(--om-ink);
   border-radius: 6px;
   overflow: hidden;
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .page__content table th {
@@ -858,3 +862,65 @@ samp {
 .accordion-panel {
   padding: 0.3em 0.4em 1.4em;
 }
+
+/* ── Syntax Highlight Override — Dark terminal (VS Code Dark+) ── */
+.page__content div.highlighter-rouge,
+.page__content figure.highlight {
+  background: #1E1E1E !important;
+  color: #D4D4D4 !important;
+}
+
+.page__content div.highlighter-rouge pre,
+.page__content figure.highlight pre,
+.page__content .highlight {
+  background: #1E1E1E !important;
+  color: #D4D4D4 !important;
+}
+
+/* 모든 rouge 토큰 span의 배경색 초기화 */
+.highlight span {
+  background: transparent !important;
+}
+
+/* 기본 텍스트 */
+.highlight .n, .highlight .nx, .highlight .nl { color: #D4D4D4 !important; }
+
+/* 키워드 — 파란색 */
+.highlight .k, .highlight .kd, .highlight .kn,
+.highlight .kp, .highlight .kr, .highlight .kt,
+.highlight .kc { color: #569CD6 !important; }
+
+/* 문자열 — 주황색 */
+.highlight .s, .highlight .s1, .highlight .s2,
+.highlight .sb, .highlight .sc, .highlight .sd,
+.highlight .se, .highlight .si, .highlight .sx { color: #CE9178 !important; }
+
+/* 주석 — 초록색 */
+.highlight .c, .highlight .c1, .highlight .cm,
+.highlight .cs, .highlight .cp { color: #6A9955 !important; font-style: italic; }
+
+/* 숫자 — 연두색 */
+.highlight .mi, .highlight .mf, .highlight .mh,
+.highlight .mo, .highlight .m { color: #B5CEA8 !important; }
+
+/* 함수/속성 이름 — 노란색 */
+.highlight .nf, .highlight .nb { color: #DCDCAA !important; }
+
+/* 클래스/타입 — 청록색 */
+.highlight .nc, .highlight .nn { color: #4EC9B0 !important; }
+
+/* 변수/self — 연보라 */
+.highlight .nv, .highlight .vc,
+.highlight .vg, .highlight .vi { color: #9CDCFE !important; }
+
+/* 연산자/구두점 */
+.highlight .o, .highlight .ow,
+.highlight .p { color: #D4D4D4 !important; }
+
+/* 에러 토큰 배경 제거 */
+.highlight .err { background: transparent !important; color: #F44747 !important; }
+
+/* 특수 강조 (gutter 등) */
+.highlight .gl, .highlight .gp { color: #858585 !important; }
+.highlight .gd { color: #F44747 !important; background: rgba(244,71,71,0.1) !important; }
+.highlight .gi { color: #B5CEA8 !important; background: rgba(181,206,168,0.1) !important; }
