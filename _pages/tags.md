@@ -1,6 +1,6 @@
 ---
 title: "Tags"
-layout: tags
+layout: tags-accordion
 permalink: /tags/
 author_profile: true
 ---
