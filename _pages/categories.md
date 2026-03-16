@@ -1,6 +1,6 @@
 ---
 title: "Categories"
-layout: categories
+layout: categories-accordion
 permalink: /categories/
 author_profile: true
 ---
