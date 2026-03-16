@@ -328,14 +328,11 @@ samp {
 }
 
 .page__content code:not([class]) {
-  background: #F0EDE8;
+/*  background: #F0EDE8;
   color: var(--om-coral);
   border-radius: 3px;
   padding: 0.1em 0.4em;
-  font-size: 0.88em;
-}
-
-.page__content pre code {
+  font-size: 0.88em; */
   background: transparent !important;
   color: inherit !important;
   padding: 0 !important;
