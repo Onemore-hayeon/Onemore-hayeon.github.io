@@ -1,0 +1,44 @@
+---
+layout: default
+---
+{% include breadcrumbs.html %}
+
+<div id="main" role="main">
+  {% include sidebar.html %}
+
+  <div class="archive">
+    {% if page.title %}<h1 class="page__title">{{ page.title }}</h1>{% endif %}
+    {{ content }}
+
+    <div class="accordion-index">
+      {% assign tags_list = site.tags | sort %}
+      {% for tag in tags_list %}
+        <div class="accordion-section">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-name">{{ tag[0] }}</span>
+            <span class="accordion-badge">{{ tag[1].size }}</span>
+            <span class="accordion-arrow">&#9654;</span>
+          </button>
+          <div class="accordion-panel" hidden>
+            {% for post in tag[1] %}
+              {% include archive-single.html %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.accordion-trigger').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var panel = this.nextElementSibling;
+    var open = !panel.hidden;
+    panel.hidden = open;
+    this.setAttribute('aria-expanded', String(!open));
+    this.querySelector('.accordion-arrow').innerHTML = open ? '&#9654;' : '&#9660;';
+    this.classList.toggle('accordion-trigger--open', !open);
+  });
+});
+</script>
