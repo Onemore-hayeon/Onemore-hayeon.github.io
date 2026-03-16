@@ -758,7 +758,7 @@ samp {
 /* ── Single post: air 스킨 흰 배경/테두리 완전 제거 ── */
 .layout--single #main,
 .layout--single article.page,
-.layout--single .page,
+// .layout--single .page,
 .layout--single .page__inner-wrap,
 .layout--single .page__content,
 .layout--single .e-content {
@@ -787,8 +787,8 @@ samp {
 }
 
 /* 반응형: 본문이 브라우저 너비에 따라 적절히 늘어나도록 */
-@media (min-width: 80em) {
+/* @media (min-width: 80em) {
   .layout--single .page {
     padding-right: 0;
   }
-}
+} */
