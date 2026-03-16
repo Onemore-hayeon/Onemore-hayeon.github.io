@@ -356,22 +356,26 @@ samp {
 .page__content table {
   font-size: 0.95em;
   border-collapse: collapse;
-  width: 100%;
-  border: 2px solid var(--om-ink);
-  border-radius: 6px;
-  overflow: hidden;
+  width: auto;
+  min-width: 50%;
+  max-width: 100%;
+  margin: 1.2em auto;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
 }
 
 .page__content table th {
   background: var(--om-ink);
   color: white;
   font-weight: 700;
-  padding: 0.6em 1em;
+  padding: 0.6em 1.2em;
+  border: 1px solid var(--om-ink);
 }
 
 .page__content table td {
-  padding: 0.55em 1em;
-  border-bottom: 1px solid var(--om-border);
+  padding: 0.55em 1.2em;
+  border: 1px solid var(--om-border);
 }
 
 .page__content table tr:hover td {
