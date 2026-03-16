@@ -335,6 +335,14 @@ samp {
   font-size: 0.88em;
 }
 
+.page__content pre code {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  font-size: 1em !important;
+  border-radius: 0 !important;
+}
+
 .page__content div.highlighter-rouge,
 .page__content figure.highlight {
   border: 2px solid var(--om-ink);
