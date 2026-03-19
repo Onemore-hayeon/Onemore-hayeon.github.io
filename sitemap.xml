@@ -12,12 +12,12 @@ layout: none
   </url>
   {% endfor %}
   {% for page in site.pages %}
-  {% if page.url != "/sitemap.xml" %}
+  {% unless page.url contains '/assets' or page.url contains 'robots' or page.url contains 'feed' or page.url contains 'sitemap' or page.url contains '.js' or page.url contains '.css' %}
   <url>
     <loc>{{ site.url }}{{ page.url }}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-  {% endif %}
+  {% endunless %}
   {% endfor %}
 </urlset>
